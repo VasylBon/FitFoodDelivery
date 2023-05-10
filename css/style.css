@@ -495,7 +495,7 @@ a {
 .promotion__descr {
     margin-top: 40px;
     font-size: 20px;
-    line-height: 24px;
+    line-height: 30px;
     font-weight: 300;
 }
 .promotion__descr span {
@@ -615,6 +615,10 @@ a {
     width: 280px;
     margin: 0 auto;
 }
+.tomato img {
+    width: 55px;
+}
+
 .show {
     display: block;
 }
