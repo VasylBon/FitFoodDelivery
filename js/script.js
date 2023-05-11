@@ -1,4 +1,35 @@
 window.addEventListener("DOMContentLoaded", function () {
+    // //Language
+    const languageZone = document.querySelector(".header__languages"),
+        selectLanguage = languageZone.querySelector(".select__language"),
+        caret = languageZone.querySelector(".caret"),
+        option = languageZone.querySelector(".language li a"),
+        language = languageZone.querySelector(".language");
+
+    function closeLanguagePanel() {
+        caret.classList.toggle("caret-rotate");
+        language.classList.toggle("language-open");
+    }
+
+    selectLanguage.addEventListener("click", closeLanguagePanel);
+
+    selectLanguage.addEventListener("mouseenter", () => {
+        if (!language.classList.contains("language-open")) {
+            closeLanguagePanel();
+        }
+    });
+
+    option.addEventListener("mouseout", () => {
+        if (language.classList.contains("language-open")) {
+            closeLanguagePanel();
+        }
+    });
+
+    option.addEventListener("click", (event) => {
+        event.preventDefault();
+        window.location.href = event.target.href;
+    });
+
     //Tabs
     let tabs = document.querySelectorAll(".tabheader__item"),
         tabsContent = document.querySelectorAll(".tabcontent"),
@@ -39,6 +70,14 @@ window.addEventListener("DOMContentLoaded", function () {
 
     //Timer
     const deadline = "2023-05-11";
+
+    function showPromotionPeriod(date) {
+        const promotionDate = document.querySelector("#date");
+        promotionDate.textContent = date;
+    }
+
+    showPromotionPeriod(deadline);
+
     function getTimeRemaining(endTime) {
         let days = 0,
             hours = 0,
@@ -88,4 +127,54 @@ window.addEventListener("DOMContentLoaded", function () {
     }
 
     setClock(".timer", deadline);
+
+    //Modal window
+
+    const btnModalOpen = document.querySelectorAll("[data-modal]"),
+        modalWindow = document.querySelector(".modal"),
+        btnModalClose = document.querySelector("[data-close]"),
+        modalTimer = setTimeout(openModal, 10000);
+
+    function openModal() {
+        modalWindow.classList.add("show");
+        modalWindow.classList.remove("hide");
+        document.body.style.overflow = "hidden";
+        clearInterval(modalTimer);
+    }
+
+    function closeModal() {
+        modalWindow.classList.add("hide");
+        modalWindow.classList.remove("show");
+        document.body.style.overflow = "";
+    }
+
+    function showModalByScroll() {
+        if (
+            window.pageYOffset + document.documentElement.clientHeight ===
+            document.documentElement.scrollHeight - 1
+        ) {
+            openModal();
+            window.removeEventListener("scroll", showModalByScroll);
+        }
+    }
+
+    btnModalOpen.forEach((item) => {
+        item.addEventListener("click", openModal);
+    });
+
+    btnModalClose.addEventListener("click", closeModal);
+
+    modalWindow.addEventListener("click", (event) => {
+        if (event.target === modalWindow) {
+            closeModal();
+        }
+    });
+
+    document.addEventListener("keydown", (event) => {
+        if (event.code === "Escape" && modalWindow.classList.contains("show")) {
+            closeModal();
+        }
+    });
+
+    window.addEventListener("scroll", showModalByScroll);
 });
