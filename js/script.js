@@ -1,10 +1,11 @@
 window.addEventListener("DOMContentLoaded", function () {
-    // //Language
+    //Change of language
     const languageZone = document.querySelector(".header__languages"),
         selectLanguage = languageZone.querySelector(".select__language"),
         caret = languageZone.querySelector(".caret"),
         option = languageZone.querySelector(".language li a"),
-        language = languageZone.querySelector(".language");
+        language = languageZone.querySelector(".language"),
+        selectedLanguage = document.querySelector(".selected");
 
     function closeLanguagePanel() {
         caret.classList.toggle("caret-rotate");
@@ -30,7 +31,7 @@ window.addEventListener("DOMContentLoaded", function () {
         window.location.href = event.target.href;
     });
 
-    //Tabs
+    //Tabs with food style
     let tabs = document.querySelectorAll(".tabheader__item"),
         tabsContent = document.querySelectorAll(".tabcontent"),
         tabsParent = document.querySelector(".tabheader__items");
@@ -68,15 +69,60 @@ window.addEventListener("DOMContentLoaded", function () {
         }
     });
 
-    //Timer
-    const deadline = "2023-05-11";
+    //Timer and promotion date
+    const deadline = "2023-06-11";
 
-    function showPromotionPeriod(date) {
-        const promotionDate = document.querySelector("#date");
-        promotionDate.textContent = date;
+    function convertDateToWords(date) {
+        const parts = deadline.split("-"),
+            month = parts[1],
+            days = parts[2];
+        let monthWords = [];
+
+        if (selectedLanguage.textContent === "ua") {
+            monthWords = [
+                "січня",
+                "лютого",
+                "березня",
+                "квітня",
+                "травня",
+                "червня",
+                "липня",
+                "серпня",
+                "вересня",
+                "жовтня",
+                "листопада",
+                "грудня",
+            ];
+        } else {
+            monthWords = [
+                "January",
+                "February",
+                "March",
+                "April",
+                "May",
+                "June",
+                "July",
+                "August",
+                "September",
+                "October",
+                "November",
+                "December",
+            ];
+        }
+        const monthWord = monthWords[month - 1];
+        return [monthWord, days];
     }
 
-    showPromotionPeriod(deadline);
+    function showPromotionPeriod(date) {
+        const promotionDate = document.querySelector("#date"),
+            [month, day] = convertDateToWords(date);
+
+        if (selectedLanguage.textContent === "ua") {
+            promotionDate.textContent = `Акція завершиться ${day} ${month} о 0:00`;
+        } else {
+            promotionDate.textContent = `The promotion will end on ${month} ${day} at 0:00`;
+        }
+    }
 
     function getTimeRemaining(endTime) {
         let days = 0,
@@ -90,6 +136,7 @@ window.addEventListener("DOMContentLoaded", function () {
             hours = Math.floor((time / 3600000) % 24);
             minutes = Math.floor((time / 60000) % 60);
             seconds = Math.floor((time / 1000) % 60);
+            showPromotionPeriod(endTime);
         }
 
         return { time, days, hours, minutes, seconds };
