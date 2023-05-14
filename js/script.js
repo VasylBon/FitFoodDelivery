@@ -227,28 +227,47 @@ window.addEventListener("DOMContentLoaded", function () {
 
     //Cards menu
     class MenuCard {
-        constructor(src, alt, title, descr, price, currency, parentSelector) {
+        constructor(
+            src,
+            alt,
+            title,
+            descr,
+            price,
+            currency,
+            parentSelector,
+            ...classes
+        ) {
             this.src = src;
             this.alt = alt;
             this.title = title;
             this.descr = descr;
             this.parent = document.querySelector(parentSelector);
             this.price = price;
+            this.priceCost = "Price:";
             this.currency = currency;
+            this.classes = classes;
             this.rate = 38;
             this.convertToUAH();
         }
 
         convertToUAH() {
-            if (selectedLanguage.textContent === "en") {
+            if (selectedLanguage.textContent === "ua") {
                 this.price = this.price * this.rate;
+                this.priceCost = "Ціна:";
             }
         }
 
         render() {
             const element = document.createElement("div");
+            if (this.classes.length == 0) {
+                this.element = "menu__item";
+                element.classList.add(this.element);
+            } else {
+                this.classes.forEach((className) =>
+                    element.classList.add(className)
+                );
+            }
             element.innerHTML = `
-            <div class="menu__item">
                 <img src=${this.src} alt=${this.alt} />
                     <h3 class="menu__item-subtitle">${this.title}</h3>
                     <div class="menu__item-descr">
@@ -256,12 +275,11 @@ window.addEventListener("DOMContentLoaded", function () {
                         </div>
                     <div class="menu__item-divider"></div>
                     <div class="menu__item-price">
-                        <div class="menu__item-cost">Ціна:</div>
+                        <div class="menu__item-cost">${this.priceCost}</div>
                         <div class="menu__item-total">
                             <span>${this.price}</span> ${this.currency}
                     </div>
                 </div>
-            </div>
             `;
             this.parent.append(element);
         }
