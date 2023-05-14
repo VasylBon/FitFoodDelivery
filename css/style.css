@@ -124,6 +124,9 @@ a {
     cursor: pointer;
     color: #9db44d;
 }
+.language li a {
+    color: #000;
+}
 .language-open {
     display: block;
     opacity: 1;

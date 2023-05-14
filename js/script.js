@@ -224,4 +224,108 @@ window.addEventListener("DOMContentLoaded", function () {
     });
 
     window.addEventListener("scroll", showModalByScroll);
+
+    //Cards menu
+    class MenuCard {
+        constructor(src, alt, title, descr, price, currency, parentSelector) {
+            this.src = src;
+            this.alt = alt;
+            this.title = title;
+            this.descr = descr;
+            this.parent = document.querySelector(parentSelector);
+            this.price = price;
+            this.currency = currency;
+            this.rate = 38;
+            this.convertToUAH();
+        }
+
+        convertToUAH() {
+            if (selectedLanguage.textContent === "en") {
+                this.price = this.price * this.rate;
+            }
+        }
+
+        render() {
+            const element = document.createElement("div");
+            element.innerHTML = `
+            <div class="menu__item">
+                <img src=${this.src} alt=${this.alt} />
+                    <h3 class="menu__item-subtitle">${this.title}</h3>
+                    <div class="menu__item-descr">
+                        ${this.descr}
+                        </div>
+                    <div class="menu__item-divider"></div>
+                    <div class="menu__item-price">
+                        <div class="menu__item-cost">Ціна:</div>
+                        <div class="menu__item-total">
+                            <span>${this.price}</span> ${this.currency}
+                    </div>
+                </div>
+            </div>
+            `;
+            this.parent.append(element);
+        }
+    }
+
+    if (selectedLanguage.textContent === "ua") {
+        new MenuCard(
+            "img/tabs/vegy.jpg",
+            "vegy",
+            "Фітнес-меню",
+            'Меню "Фітнес" - це новий підхід до приготування страв Детальніше свіжі фрукти та овочі. Продукт активних і здорових людей. Це абсолютно новий продукт з найкращою ціною та високою якістю!',
+            "6",
+            "₴/день",
+            ".menu .container"
+        ).render();
+
+        new MenuCard(
+            "img/tabs/post.jpg",
+            "post",
+            "Пісне-меню",
+            'Меню "Пісне" - це ретельний підбір інгредієнтів: Зовсім немає продуктів тваринного походження, молоко з мигдалю, вівса, кокоса або гречки, правильна кількість білка за рахунок тофу та імпортних вегетаріанські стейки.',
+            "10",
+            "₴/день",
+            ".menu .container"
+        ).render();
+
+        new MenuCard(
+            "img/tabs/elite.jpg",
+            "elite",
+            "Преміум-меню",
+            'У меню "Преміум" ми використовуємо не тільки красивий дизайн упаковки, але й якісне виконання страв. Червона риба, морепродукти, фрукти - ресторанне меню без відвідування ресторану!',
+            "14",
+            "₴/день",
+            ".menu .container"
+        ).render();
+    } else {
+        new MenuCard(
+            "img/tabs/vegy.jpg",
+            "vegy",
+            "Fitness-menu",
+            'The "Fitness" menu is a new approach to cooking More fresh fruits and vegetables. The product of active and healthy people. This is a brand new Product with the best price and high quality!',
+            "6",
+            "$/day",
+            ".menu .container"
+        ).render();
+
+        new MenuCard(
+            "img/tabs/post.jpg",
+            "post",
+            "Lenten-menu",
+            'The menu "Lenten" is a careful selection of ingredients: No animal products at all, milk from almonds, oats, coconut or buckwheat, The right amount of protein through tofu and imported vegetarian steaks.',
+            "10",
+            "$/day",
+            ".menu .container"
+        ).render();
+
+        new MenuCard(
+            "img/tabs/elite.jpg",
+            "elite",
+            "Premium-menu",
+            'In the "Premium" menu we use not only beautiful package design, but also high-quality execution of the dishes. Red fish seafood, fruit - a restaurant menu without going to the restaurant!',
+            "14",
+            "$/day",
+            ".menu .container"
+        ).render();
+    }
 });
