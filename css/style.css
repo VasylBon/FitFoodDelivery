@@ -528,6 +528,12 @@ a {
     padding: 0 20px;
     outline: 0;
 }
+.loading {
+    transform: scale(0.5);
+    display: block;
+    padding-top: 25px;
+    margin: 0 auto;
+}
 .promotion {
     padding: 70px 0 240px 0;
     position: relative;
