@@ -233,7 +233,7 @@ window.addEventListener("DOMContentLoaded", function () {
             title,
             descr,
             price,
-            currency,
+            language,
             parentSelector,
             ...classes
         ) {
@@ -243,17 +243,19 @@ window.addEventListener("DOMContentLoaded", function () {
             this.descr = descr;
             this.parent = document.querySelector(parentSelector);
             this.price = price;
+            this.language = language;
             this.priceCost = "Price:";
-            this.currency = currency;
+            this.currency = "$/day";
             this.classes = classes;
             this.rate = 38;
             this.convertToUAH();
         }
 
         convertToUAH() {
-            if (selectedLanguage.textContent === "ua") {
+            if (this.language === "ua") {
                 this.price = this.price * this.rate;
                 this.priceCost = "Ціна:";
+                this.currency = "₴/день";
             }
         }
 
@@ -285,67 +287,31 @@ window.addEventListener("DOMContentLoaded", function () {
         }
     }
 
-    if (selectedLanguage.textContent === "ua") {
-        new MenuCard(
-            "img/tabs/vegy.jpg",
-            "vegy",
-            "Фітнес-меню",
-            'Меню "Фітнес" - це новий підхід до приготування страв Детальніше свіжі фрукти та овочі. Продукт активних і здорових людей. Це абсолютно новий продукт з найкращою ціною та високою якістю!',
-            "6",
-            "₴/день",
-            ".menu .container"
-        ).render();
+    const getResource = async (url) => {
+        const res = await fetch(url);
 
-        new MenuCard(
-            "img/tabs/post.jpg",
-            "post",
-            "Пісне-меню",
-            'Меню "Пісне" - це ретельний підбір інгредієнтів: Зовсім немає продуктів тваринного походження, молоко з мигдалю, вівса, кокоса або гречки, правильна кількість білка за рахунок тофу та імпортних вегетаріанські стейки.',
-            "10",
-            "₴/день",
-            ".menu .container"
-        ).render();
+        if (!res.ok) {
+            throw new Error(`Couldn't fetch ${url}, status: ${res.status}`);
+        }
 
-        new MenuCard(
-            "img/tabs/elite.jpg",
-            "elite",
-            "Преміум-меню",
-            'У меню "Преміум" ми використовуємо не тільки красивий дизайн упаковки, але й якісне виконання страв. Червона риба, морепродукти, фрукти - ресторанне меню без відвідування ресторану!',
-            "14",
-            "₴/день",
-            ".menu .container"
-        ).render();
-    } else {
-        new MenuCard(
-            "img/tabs/vegy.jpg",
-            "vegy",
-            "Fitness-menu",
-            'The "Fitness" menu is a new approach to cooking More fresh fruits and vegetables. The product of active and healthy people. This is a brand new Product with the best price and high quality!',
-            "6",
-            "$/day",
-            ".menu .container"
-        ).render();
+        return await res.json();
+    };
 
-        new MenuCard(
-            "img/tabs/post.jpg",
-            "post",
-            "Lenten-menu",
-            'The menu "Lenten" is a careful selection of ingredients: No animal products at all, milk from almonds, oats, coconut or buckwheat, The right amount of protein through tofu and imported vegetarian steaks.',
-            "10",
-            "$/day",
-            ".menu .container"
-        ).render();
-
-        new MenuCard(
-            "img/tabs/elite.jpg",
-            "elite",
-            "Premium-menu",
-            'In the "Premium" menu we use not only beautiful package design, but also high-quality execution of the dishes. Red fish seafood, fruit - a restaurant menu without going to the restaurant!',
-            "14",
-            "$/day",
-            ".menu .container"
-        ).render();
-    }
+    getResource("http://localhost:3000/menu").then((data) => {
+        data.forEach(({ img, altimg, title, descr, price, language }) => {
+            if (language === selectedLanguage.textContent) {
+                new MenuCard(
+                    img,
+                    altimg,
+                    title,
+                    descr,
+                    price,
+                    language,
+                    ".menu .container"
+                ).render();
+            }
+        });
+    });
 
     //Forms
     const forms = document.querySelectorAll("form");
@@ -357,10 +323,20 @@ window.addEventListener("DOMContentLoaded", function () {
     };
 
     forms.forEach((item) => {
-        postData(item);
+        bindPostData(item);
     });
 
-    function postData(form) {
+    const postData = async (url, data) => {
+        const res = await fetch(url, {
+            method: "POST",
+            headers: { "Content-type": "application/json" },
+            body: data,
+        });
+
+        return await res.json();
+    };
+
+    function bindPostData(form) {
         form.addEventListener("submit", (event) => {
             event.preventDefault();
 
@@ -371,17 +347,9 @@ window.addEventListener("DOMContentLoaded", function () {
 
             const formData = new FormData(form);
 
-            const object = {};
-            formData.forEach(function (value, key) {
-                object[key] = value;
-            });
+            const json = JSON.stringify(Object.fromEntries(formData.entries()));
 
-            fetch("server.php", {
-                method: "POST",
-                headers: { "Content-type": "application/json" },
-                body: JSON.stringify(object),
-            })
-                .then((data) => data.text())
+            postData("http://localhost:3000/requests", json)
                 .then((data) => {
                     console.log(data);
                     showThanksModal(message.success);
@@ -418,8 +386,4 @@ window.addEventListener("DOMContentLoaded", function () {
             closeModal();
         }, 4000);
     }
-
-    fetch("db.json")
-        .then((data) => data.json())
-        .then((res) => console.log(res));
 });

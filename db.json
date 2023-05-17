@@ -1,28 +1,53 @@
 {
-  "menu": [
-    {
-      "img": "img/tabs/vegy.jpg",
-      "altimg": "vegy",
-      "title": "Меню 'Фитнес'",
-      "descr": "Меню 'Фитнес' - это новый подход к приготовлению блюд: больше свежих овощей и фруктов. Продукт активных и здоровых людей. Это абсолютно новый продукт с оптимальной ценой и высоким качеством!",
-      "price": 9
-    },
-    {
-      "img": "img/tabs/post.jpg",
-      "altimg": "post",
-      "title": "Меню 'Постное'",
-      "descr": "Меню 'Постное' - это тщательный подбор ингредиентов: полное отсутствие продуктов животного происхождения, молоко из миндаля, овса, кокоса или гречки, правильное количество белков за счет тофу и импортных вегетарианских стейков.",
-      "price": 14
-    },
-    {
-      "img": "img/tabs/elite.jpg",
-      "altimg": "elite",
-      "title": "Меню 'Премиум'",
-      "descr": "В меню 'Премиум' мы используем не только красивый дизайн упаковки, но и качественное исполнение блюд. Красная рыба, морепродукты, фрукты - ресторанное меню без похода в ресторан!",
-      "price": 21
-    }
-  ],
-  "requests": [
-      
-  ]
+    "menu": [
+        {
+            "img": "img/tabs/vegy.jpg",
+            "altimg": "vegy",
+            "title": "Фітнес-меню",
+            "descr": "Меню `Фітнес` - це новий підхід до приготування страв Детальніше свіжі фрукти та овочі. Продукт активних і здорових людей. Це абсолютно новий продукт з найкращою ціною та високою якістю!",
+            "price": 6,
+            "language": "ua"
+        },
+        {
+            "img": "img/tabs/post.jpg",
+            "altimg": "post",
+            "title": "Пісне-меню",
+            "descr": "Меню 'Пісне' - це ретельний підбір інгредієнтів: Зовсім немає продуктів тваринного походження, молоко з мигдалю, вівса, кокоса або гречки, правильна кількість білка за рахунок тофу та імпортних вегетаріанські стейки.",
+            "price": 10,
+            "language": "ua"
+        },
+        {
+            "img": "img/tabs/elite.jpg",
+            "altimg": "elite",
+            "title": "Преміум-меню",
+            "descr": "У меню 'Преміум' ми використовуємо не тільки красивий дизайн упаковки, але й якісне виконання страв. Червона риба, морепродукти, фрукти - ресторанне меню без відвідування ресторану!",
+            "price": 14,
+            "language": "ua"
+        },
+        {
+            "img": "img/tabs/vegy.jpg",
+            "altimg": "vegy",
+            "title": "Fitness-menu",
+            "descr": "The 'Fitness' menu is a new approach to cooking More fresh fruits and vegetables. The product of active and healthy people. This is a brand new Product with the best price and high quality!",
+            "price": 6,
+            "language": "en"
+        },
+        {
+            "img": "img/tabs/post.jpg",
+            "altimg": "post",
+            "title": "Lenten-menu",
+            "descr": "The menu 'Lenten' is a careful selection of ingredients: No animal products at all, milk from almonds, oats, coconut or buckwheat, The right amount of protein through tofu and imported vegetarian steaks.",
+            "price": 10,
+            "language": "en"
+        },
+        {
+            "img": "img/tabs/elite.jpg",
+            "altimg": "elite",
+            "title": "Premium-menu",
+            "descr": "In the 'Premium' menu we use not only beautiful package design, but also high-quality execution of the dishes. Red fish seafood, fruit - a restaurant menu without going to the restaurant!",
+            "price": 14,
+            "language": "en"
+        }
+    ],
+    "requests": []
 }
