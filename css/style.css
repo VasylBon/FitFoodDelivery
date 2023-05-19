@@ -522,11 +522,11 @@ a {
     height: 50px;
     background: #fff;
     box-shadow: 0 4px 15px rgba(157, 180, 77, 0.3);
-    border: none;
     font-size: 18px;
     text-align: center;
     padding: 0 20px;
     outline: 0;
+    border: 1px solid rgb(157, 180, 77);
 }
 .loading {
     transform: scale(0.5);
@@ -554,6 +554,7 @@ a {
     width: 50%;
 }
 .promotion__descr {
+    width: 85%;
     margin-top: 40px;
     font-size: 20px;
     line-height: 30px;
@@ -673,7 +674,7 @@ a {
     height: 50px;
     background: #fff;
     box-shadow: 0 4px 15px rgba(157, 180, 77, 0.3);
-    border: none;
+    border: 1px solid rgb(157, 180, 77);
     font-size: 18px;
     text-align: center;
     padding: 0 20px;
