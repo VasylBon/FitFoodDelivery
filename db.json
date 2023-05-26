@@ -1,54 +1,84 @@
 {
-    "menu": [
-        {
-            "img": "img/tabs/vegy.jpg",
-            "altimg": "vegy",
-            "title": "Фітнес-меню",
-            "descr": "Меню 'Фітнес' - це новий підхід до приготування страв. Більше свіжих фруктів та овочів. Підійде для активних людей, які цікавляться спортом та своїм здоров'ям. Це абсолютно новий продукт з оптимальною ціною та високою якістю!",
-            "price": 6,
-            "language": "ua"
-        },
-        {
-            "img": "img/tabs/post.jpg",
-            "altimg": "post",
-            "title": "Пісне-меню",
-            "descr": "Наше спеціальне 'Пісне' меню - це ретельний відбір інгредієнтів: жодних продуктів тваринного походження. Повна гармонія з собою та природою в кожному елементі! Все буде смачно!",
-            "price": 10,
-            "language": "ua"
-        },
-        {
-            "img": "img/tabs/elite.jpg",
-            "altimg": "elite",
-            "title": "Преміум-меню",
-            "descr": "У 'Преміум' меню - ми використовуємо не тільки гарний дизайн упаковки , але й якісне виконання страв. Червона риба, морепродукти, фрукти - ресторанне меню без відвідування ресторану!",
-            "price": 14,
-            "language": "ua"
-        },
-        {
-            "img": "img/tabs/vegy.jpg",
-            "altimg": "vegy",
-            "title": "Fitness-menu",
-            "descr": "The 'Fitness' menu is a new approach to cooking dishes. More fresh fruits and vegetables. Suitable for active people, who are interested in sports and their health. This is a brand new product with an optimal price and high quality!",
-            "price": 6,
-            "language": "en"
-        },
-        {
-            "img": "img/tabs/post.jpg",
-            "altimg": "post",
-            "title": "Lenten-menu",
-            "descr": "Our special 'Lean' menu is a careful selection of of ingredients: no products of animal of animal origin. Complete harmony with yourself and nature in in every element! Everything will be delicious!",
-            "price": 10,
-            "language": "en"
-        },
-        {
-            "img": "img/tabs/elite.jpg",
-            "altimg": "elite",
-            "title": "Premium-menu",
-            "descr": "In the 'Premium' menu, we use not only beautiful packaging design, but also high-quality dishes. Red fish, seafood, fruits - a restaurant menu without visiting a restaurant!",
-            "price": 14,
-            "language": "en"
-        }
-    ],
-
-    "requests": []
+  "menu": [
+    {
+      "img": "img/tabs/vegy.jpg",
+      "altimg": "vegy",
+      "title": "Фітнес-меню",
+      "descr": "Меню 'Фітнес' - це новий підхід до приготування страв. Більше свіжих фруктів та овочів. Підійде для активних людей, які цікавляться спортом та своїм здоров'ям. Це абсолютно новий продукт з оптимальною ціною та високою якістю!",
+      "price": 6,
+      "language": "ua"
+    },
+    {
+      "img": "img/tabs/post.jpg",
+      "altimg": "post",
+      "title": "Пісне-меню",
+      "descr": "Наше спеціальне 'Пісне' меню - це ретельний відбір інгредієнтів: жодних продуктів тваринного походження. Повна гармонія з собою та природою в кожному елементі! Все буде смачно!",
+      "price": 10,
+      "language": "ua"
+    },
+    {
+      "img": "img/tabs/elite.jpg",
+      "altimg": "elite",
+      "title": "Преміум-меню",
+      "descr": "У 'Преміум' меню - ми використовуємо не тільки гарний дизайн упаковки , але й якісне виконання страв. Червона риба, морепродукти, фрукти - ресторанне меню без відвідування ресторану!",
+      "price": 14,
+      "language": "ua"
+    },
+    {
+      "img": "img/tabs/vegy.jpg",
+      "altimg": "vegy",
+      "title": "Fitness-menu",
+      "descr": "The 'Fitness' menu is a new approach to cooking dishes. More fresh fruits and vegetables. Suitable for active people, who are interested in sports and their health. This is a brand new product with an optimal price and high quality!",
+      "price": 6,
+      "language": "en"
+    },
+    {
+      "img": "img/tabs/post.jpg",
+      "altimg": "post",
+      "title": "Lenten-menu",
+      "descr": "Our special 'Lean' menu is a careful selection of of ingredients: no products of animal of animal origin. Complete harmony with yourself and nature in in every element! Everything will be delicious!",
+      "price": 10,
+      "language": "en"
+    },
+    {
+      "img": "img/tabs/elite.jpg",
+      "altimg": "elite",
+      "title": "Premium-menu",
+      "descr": "In the 'Premium' menu, we use not only beautiful packaging design, but also high-quality dishes. Red fish, seafood, fruits - a restaurant menu without visiting a restaurant!",
+      "price": 14,
+      "language": "en"
+    }
+  ],
+  "requests": [
+    {
+      "name": "sad",
+      "phone": "asd",
+      "id": 1
+    },
+    {
+      "name": "asd",
+      "phone": "asd",
+      "id": 2
+    },
+    {
+      "name": "212",
+      "phone": "12",
+      "id": 3
+    },
+    {
+      "name": "sada",
+      "phone": "+380950177360",
+      "id": 4
+    },
+    {
+      "name": "Diana",
+      "phone": "+380950177360",
+      "id": 5
+    },
+    {
+      "name": "asda",
+      "phone": "asd",
+      "id": 6
+    }
+  ]
 }
