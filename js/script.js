@@ -11,7 +11,7 @@ import { openModal } from "./modules/modal";
 window.addEventListener("DOMContentLoaded", function () {
     const selectedLanguage = document.querySelector(".selected"),
         modalTimer = setTimeout(() => openModal(".modal", modalTimer), 50000),
-        deadline = "2023-06-10";
+        deadline = "2024-05-10";
 
     tabs(".tabheader__item", ".tabcontent", ".tabheader__items", "tabheader__item_active");
     modal("[data-modal]", ".modal", modalTimer);
