@@ -828,7 +828,7 @@ __webpack_require__.r(__webpack_exports__);
 window.addEventListener("DOMContentLoaded", function () {
     const selectedLanguage = document.querySelector(".selected"),
         modalTimer = setTimeout(() => (0,_modules_modal__WEBPACK_IMPORTED_MODULE_2__.openModal)(".modal", modalTimer), 50000),
-        deadline = "2023-06-10";
+        deadline = "2024-06-10";
 
     (0,_modules_tabs_js__WEBPACK_IMPORTED_MODULE_0__["default"])(".tabheader__item", ".tabcontent", ".tabheader__items", "tabheader__item_active");
     (0,_modules_modal__WEBPACK_IMPORTED_MODULE_2__["default"])("[data-modal]", ".modal", modalTimer);
